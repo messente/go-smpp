@@ -22,7 +22,7 @@ func (l List) Decode(r *bytes.Buffer) (Map, error) {
 	var (
 		unsuccessCount, numDest, udhLength, smLength int
 
-		udhiFlag bool
+		//udhiFlag bool
 	)
 	f := make(Map)
 loop:
@@ -83,59 +83,59 @@ loop:
 				numDest = int(b)
 			case SMLength:
 				smLength = int(b)
-			case ESMClass:
-				mask := byte(1 << 6)
-				udhiFlag = mask == b&mask
+			//case ESMClass:
+			//	mask := byte(1 << 6)
+			//	//udhiFlag = mask == b&mask
 			}
-		case UDHLength:
-			if !udhiFlag {
-				continue
-			}
-			b, err := r.ReadByte()
-			if err == io.EOF {
-				break loop
-			}
-			if err != nil {
-				return nil, err
-			}
-			udhLength = int(b)
-			f[k] = &Fixed{Data: b}
-		case GSMUserData:
-			if !udhiFlag {
-				continue
-			}
-			var udhList []UDH
-			var l int
-			for i := udhLength; i > 0; i -= l + 2 {
-				var udh UDH
-				// Read IEI
-				b, err := r.ReadByte()
-				if err == io.EOF {
-					break loop
-				}
-				if err != nil {
-					return nil, err
-				}
-				udh.IEI = Fixed{Data: b}
-				// Read IELength
-				b, err = r.ReadByte()
-				if err == io.EOF {
-					break loop
-				}
-				if err != nil {
-					return nil, err
-				}
-				l = int(b)
-				udh.IELength = Fixed{Data: b}
-				// Read IEData
-				bt := r.Next(l)
-				udh.IEData = Variable{Data: bt}
-				udhList = append(udhList, udh)
-				if len(bt) != l {
-					break loop
-				}
-			}
-			f[k] = &UDHList{Data: udhList}
+		//case UDHLength:
+		//	if !udhiFlag {
+		//		continue
+		//	}
+		//	b, err := r.ReadByte()
+		//	if err == io.EOF {
+		//		break loop
+		//	}
+		//	if err != nil {
+		//		return nil, err
+		//	}
+		//	udhLength = int(b)
+		//	f[k] = &Fixed{Data: b}
+		//case GSMUserData:
+		//	if !udhiFlag {
+		//		continue
+		//	}
+		//	var udhList []UDH
+		//	var l int
+		//	for i := udhLength; i > 0; i -= l + 2 {
+		//		var udh UDH
+		//		// Read IEI
+		//		b, err := r.ReadByte()
+		//		if err == io.EOF {
+		//			break loop
+		//		}
+		//		if err != nil {
+		//			return nil, err
+		//		}
+		//		udh.IEI = Fixed{Data: b}
+		//		// Read IELength
+		//		b, err = r.ReadByte()
+		//		if err == io.EOF {
+		//			break loop
+		//		}
+		//		if err != nil {
+		//			return nil, err
+		//		}
+		//		l = int(b)
+		//		udh.IELength = Fixed{Data: b}
+		//		// Read IEData
+		//		bt := r.Next(l)
+		//		udh.IEData = Variable{Data: bt}
+		//		udhList = append(udhList, udh)
+		//		if len(bt) != l {
+		//			break loop
+		//		}
+		//	}
+		//	f[k] = &UDHList{Data: udhList}
 		case DestinationList:
 			var destList []DestSme
 			for i := 0; i < numDest; i++ {
