@@ -1,4 +1,4 @@
-module github.com/ukuloskit/go-smpp
+module github.com/messente/go-smpp
 
 go 1.12
 
