@@ -10,8 +10,8 @@ import (
 	"io"
 	"sync/atomic"
 
-	"github.com/ukuloskit/go-smpp/smpp/pdu/pdufield"
-	"github.com/ukuloskit/go-smpp/smpp/pdu/pdutlv"
+	"github.com/messente/go-smpp/smpp/pdu/pdufield"
+	"github.com/messente/go-smpp/smpp/pdu/pdutlv"
 )
 
 var nextSeq uint32

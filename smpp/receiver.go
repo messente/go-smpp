@@ -11,8 +11,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ukuloskit/go-smpp/smpp/pdu"
-	"github.com/ukuloskit/go-smpp/smpp/pdu/pdufield"
+	"github.com/messente/go-smpp/smpp/pdu"
+	"github.com/messente/go-smpp/smpp/pdu/pdufield"
 )
 
 // Receiver implements an SMPP client receiver.

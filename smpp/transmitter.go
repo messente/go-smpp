@@ -15,10 +15,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ukuloskit/go-smpp/smpp/pdu"
-	"github.com/ukuloskit/go-smpp/smpp/pdu/pdufield"
-	"github.com/ukuloskit/go-smpp/smpp/pdu/pdutext"
-	"github.com/ukuloskit/go-smpp/smpp/pdu/pdutlv"
+	"github.com/messente/go-smpp/smpp/pdu"
+	"github.com/messente/go-smpp/smpp/pdu/pdufield"
+	"github.com/messente/go-smpp/smpp/pdu/pdutext"
+	"github.com/messente/go-smpp/smpp/pdu/pdutlv"
 )
 
 // ErrMaxWindowSize is returned when an operation (such as Submit) violates

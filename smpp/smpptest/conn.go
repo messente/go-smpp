@@ -10,7 +10,7 @@ import (
 	"io"
 	"net"
 
-	"github.com/ukuloskit/go-smpp/smpp/pdu"
+	"github.com/messente/go-smpp/smpp/pdu"
 )
 
 // Conn implements a server side connection.

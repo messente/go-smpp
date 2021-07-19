@@ -11,10 +11,10 @@ import (
 
 	"golang.org/x/time/rate"
 
-	"github.com/ukuloskit/go-smpp/smpp/pdu"
-	"github.com/ukuloskit/go-smpp/smpp/pdu/pdufield"
-	"github.com/ukuloskit/go-smpp/smpp/pdu/pdutext"
-	"github.com/ukuloskit/go-smpp/smpp/smpptest"
+	"github.com/messente/go-smpp/smpp/pdu"
+	"github.com/messente/go-smpp/smpp/pdu/pdufield"
+	"github.com/messente/go-smpp/smpp/pdu/pdutext"
+	"github.com/messente/go-smpp/smpp/smpptest"
 )
 
 func TestShortMessage(t *testing.T) {
